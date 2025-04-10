@@ -16,12 +16,12 @@ function App() {
   const handleUpload = async () => {
     const formData = new FormData();
     formData.append('file', file);
-    const res = await axios.post('https://your-backend.onrender.com/upload', formData);
+    const res = await axios.post('https://qoe-render-ready-2.onrender.com/upload', formData);
     setSummary(JSON.stringify(res.data.data, null, 2));
   };
 
   const handleGenerateQoe = async () => {
-    const res = await axios.post('https://your-backend.onrender.com/generate_qoe', {
+    const res = await axios.post('https://qoe-render-ready-2.onrender.com/generate_qoe', {
       financial_summary: summary,
       type: promptType
     });
@@ -29,7 +29,7 @@ function App() {
   };
 
   const handleExport = async () => {
-    const res = await axios.get('https://your-backend.onrender.com/export_docx', {
+    const res = await axios.get('https://qoe-render-ready-2.onrender.com/export_docx', {
       responseType: 'blob'
     });
     const url = window.URL.createObjectURL(new Blob([res.data]));
@@ -41,7 +41,7 @@ function App() {
   };
 
   const handleChart = async () => {
-    const res = await axios.get('https://your-backend.onrender.com/revenue_chart', {
+    const res = await axios.get('https://qoe-render-ready-2.onrender.com/revenue_chart', {
       responseType: 'blob'
     });
     const url = window.URL.createObjectURL(new Blob([res.data]));
