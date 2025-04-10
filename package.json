@@ -1,6 +1,6 @@
 
 {
-  "name": "qoe-frontend",
+  "name": "qoe_frontend_vercel",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
