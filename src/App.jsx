@@ -1,13 +1,19 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import LandingPage from './LandingPage';
 
 function App() {
+  const [showApp, setShowApp] = useState(false);
   const [file, setFile] = useState(null);
   const [summary, setSummary] = useState('');
   const [qoeText, setQoeText] = useState('');
   const [promptType, setPromptType] = useState('executive_summary');
   const [chartUrl, setChartUrl] = useState('');
+
+  if (!showApp) {
+    return <LandingPage onContinue={() => setShowApp(true)} />;
+  }
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -50,7 +56,7 @@ function App() {
 
   return (
     <div className="p-6 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">QoE Report Generator</h1>
+      <h1 className="text-2xl font-bold mb-4">Acquisight QoE</h1>
       <input type="file" onChange={handleFileChange} className="mb-4" />
 
       <div className="mb-4">
