@@ -31,27 +31,27 @@ function App() {
   const uploadBothFiles = async () => {
     const formData = new FormData();
     formData.append('file', pnlFile);
-    const res = await axios.post('https://qoe-render-ready-3.onrender.com/upload', formData);
+    const res = await axios.post('https://qoe-render-ready-4.onrender.com/upload', formData);
     setSummary(JSON.stringify(res.data.data, null, 2));
 
     if (balanceSheetFile) {
       const bsForm = new FormData();
       bsForm.append('file', balanceSheetFile);
-      await axios.post('https://qoe-render-ready-3.onrender.com/upload?type=balance_sheet', bsForm);
+      await axios.post('https://qoe-render-ready-4.onrender.com/upload?type=balance_sheet', bsForm);
     }
   };
 
   const autoGenerate = async () => {
     const [executiveRes, revenueRes, wcRes] = await Promise.all([
-      axios.post('https://qoe-render-ready-3.onrender.com/generate_qoe', {
+      axios.post('https://qoe-render-ready-4.onrender.com/generate_qoe', {
         financial_summary: summary,
         type: 'executive_summary'
       }),
-      axios.post('https://qoe-render-ready-3.onrender.com/generate_qoe', {
+      axios.post('https://qoe-render-ready-4.onrender.com/generate_qoe', {
         financial_summary: summary,
         type: 'revenue_trends'
       }),
-      axios.post('https://qoe-render-ready-3.onrender.com/generate_qoe', {
+      axios.post('https://qoe-render-ready-4.onrender.com/generate_qoe', {
         financial_summary: summary,
         type: 'working_capital'
       }),
@@ -63,7 +63,7 @@ function App() {
   };
 
   const handleExport = async () => {
-    const res = await axios.get('https://qoe-render-ready-3.onrender.com/export_docx', {
+    const res = await axios.get('https://qoe-render-ready-4.onrender.com/export_docx', {
       responseType: 'blob'
     });
     const url = window.URL.createObjectURL(new Blob([res.data]));
@@ -75,7 +75,7 @@ function App() {
   };
 
   const handleChart = async () => {
-    const res = await axios.get('https://qoe-render-ready-3.onrender.com/revenue_chart', {
+    const res = await axios.get('https://qoe-render-ready-4.onrender.com/revenue_chart', {
       responseType: 'blob'
     });
     const url = window.URL.createObjectURL(new Blob([res.data]));
