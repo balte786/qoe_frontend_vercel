@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import LandingPage from './LandingPage';
+import AdbacksUploader from './AdbacksUploader';
 
 function App() {
   const [showApp, setShowApp] = useState(false);
@@ -101,6 +102,9 @@ function App() {
       <input type="file" onChange={handleBalanceSheetFileChange} className="mb-6" />
 
       <button onClick={uploadBothFiles} className="bg-blue-600 text-white px-4 py-2 rounded mr-2">Upload & Generate Report</button>
+      <div className="mt-10">
+  <AdbacksUploader />
+</div>
       <button onClick={handleExport} className="bg-purple-600 text-white px-4 py-2 rounded">Export Word Report</button>
 
       <div className="mt-6">
